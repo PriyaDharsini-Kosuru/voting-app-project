@@ -38,4 +38,4 @@ The application consists of multiple services:
 ![Architecture diagram](architecture.excalidraw.png)
 
 ## Author
-Developed as part of DevOps learning
+Noothana Sai Priya Dharshini Kosuru 📧 Email: kosurupriya06@gmail.com
