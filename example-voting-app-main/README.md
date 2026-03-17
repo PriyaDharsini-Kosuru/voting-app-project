@@ -1,50 +1,45 @@
 # Example Voting App
 
-A simple distributed application running across multiple Docker containers.
+# Voting Application (Docker + Kubernetes)
 
-## Getting started
+This project demonstrates deployment of a microservices-based voting application using Docker and Kubernetes.
 
-Download [Docker Desktop](https://www.docker.com/products/docker-desktop) for Mac or Windows. [Docker Compose](https://docs.docker.com/compose) will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/).
+## Architecture
+The application consists of multiple services:
 
-This solution uses Python, Node.js, .NET, with Redis for messaging and Postgres for storage.
+- Vote (Python frontend) – allows users to vote
+- Result (Node.js app) – displays voting results
+- Worker (.NET service) – processes votes
+- Redis – message queue
+- PostgreSQL – database storage
 
-Run in this directory to build and run the app:
+## Technologies Used
+- Docker (containerization)
+- Docker Compose (local setup)
+- Kubernetes (Deployments, Services)
+- Microservices architecture
 
-```shell
-docker compose up
-```
+## How It Works
+1. Users vote through the frontend application
+2. Votes are stored temporarily in Redis
+3. Worker service processes votes and stores them in PostgreSQL
+4. Result service fetches data and displays real-time results
 
-The `vote` app will be running at [http://localhost:8080](http://localhost:8080), and the `results` will be at [http://localhost:8081](http://localhost:8081).
+## Deployment
+- Used Docker Compose for local multi-container setup
+- Deployed services on Kubernetes using YAML configurations in `k8s-specifications/`
 
-Alternately, if you want to run it on a [Docker Swarm](https://docs.docker.com/engine/swarm/), first make sure you have a swarm. If you don't, run:
+## Features
+- Multi-service architecture
+- Real-time result updates
+- Scalable deployment using Kubernetes
+- Containerized applications using Docker
 
-```shell
-docker swarm init
-```
+## Screenshots
+(Add your UI screenshots here)
 
-Once you have your swarm, in this directory run:
-
-```shell
-docker stack deploy --compose-file docker-stack.yml vote
-```
-
-## Run the app in Kubernetes
-
-The folder k8s-specifications contains the YAML specifications of the Voting App's services.
-
-Run the following command to create the deployments and services. Note it will create these resources in your current namespace (`default` if you haven't changed it.)
-
-```shell
-kubectl create -f k8s-specifications/
-```
-
-The `vote` web app is then available on port 31000 on each host of the cluster, the `result` web app is available on port 31001.
-
-To remove them, run:
-
-```shell
-kubectl delete -f k8s-specifications/
-```
+## Author
+Developed as part of DevOps learning
 
 ## Architecture
 
