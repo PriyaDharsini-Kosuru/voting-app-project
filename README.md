@@ -1,5 +1,3 @@
-# Voting Application
-
 # Voting Application (Docker + Kubernetes)
 
 This project demonstrates deployment of a microservices-based voting application using Docker and Kubernetes.
